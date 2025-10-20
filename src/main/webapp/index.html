@@ -76,5 +76,319 @@
         <p>&copy; 2025 Tata Motors. All rights reserved.</p>
     </footer>
 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tata Cars — Service & Maintenance</title>
+  <meta name="description" content="Book scheduled service, find a service center, and check service packages for Tata Cars." />
+  <style>
+    :root{
+      --brand:#0b5cff; --muted:#6b7280; --bg:#f6f7fb; --card:#ffffff;
+      --radius:12px; --maxw:1100px;
+      --shadow: 0 8px 24px rgba(15,23,42,0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--brand),#29b4ff);border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
+    header h1{margin:0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Hero */
+    .hero{display:flex;gap:20px;background:linear-gradient(180deg,#ffffff,transparent);padding:20px;border-radius:14px;box-shadow:var(--shadow);align-items:center}
+    .hero-left{flex:1}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:var(--brand);font-weight:600;font-size:13px;margin-bottom:12px}
+    .hero h2{margin:0 0 10px 0;font-size:26px}
+    .hero p{margin:0;color:var(--muted)}
+    .hero-cta{margin-top:14px;display:flex;gap:10px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-ghost{background:#fff;border:1px solid #e6eefc;color:var(--brand)}
+    .hero-right{width:320px;flex:0 0 320px;text-align:center}
+
+    /* Service cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);min-height:120px}
+    .card h3{margin:0 0 8px 0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Appointment / Finder */
+    .split{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
+    .panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+    form .row{display:flex;gap:8px;margin-bottom:10px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type=text], input[type=email], input[type=tel], select{width:100%;padding:10px;border:1px solid #e6eaf2;border-radius:8px;font-size:14px}
+    textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eaf2;min-height:80px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* List */
+    .centers{margin-top:10px}
+    .center{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;border:1px solid #eef2f7;margin-bottom:10px}
+    .center .left{max-width:70%}
+    .center h4{margin:0;font-size:15px}
+    .center p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
+
+    /* FAQ */
+    .faq{margin-top:18px}
+    .faq-item{background:#fff;padding:12px;border-radius:10px;border:1px solid #f0f4fb;margin-bottom:8px}
+    .faq-item summary{cursor:pointer;font-weight:600}
+    .faq-item p{margin:8px 0 0 0;color:var(--muted)}
+
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px;padding:18px 10px}
+
+    @media (max-width:980px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .split{grid-template-columns:1fr}
+      .hero-right{display:none}
+      .card{min-height:110px}
+    }
+    @media (max-width:600px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div class="logo" aria-hidden="true">T</div>
+      <div>
+        <h1>Service & Maintenance — Tata Cars</h1>
+        <p>Book service, view packages, and locate authorized service centres.</p>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <span class="kicker">Service & Support</span>
+        <h2 id="hero-title">Keep your Tata running at peak performance</h2>
+        <p>Scheduled maintenance, genuine parts, and certified technicians — we're here to help. Book an appointment online or find a nearby service centre.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" id="bookNowBtn">Book Service</button>
+          <button class="btn btn-ghost" id="findCenterBtn">Find Service Centre</button>
+        </div>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <!-- Placeholder image block -->
+        <div style="background:linear-gradient(135deg,#e8f4ff,#f7fbff);border-radius:12px;padding:20px;box-shadow:0 8px 20px rgba(11,92,255,0.06)">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='140'><rect width='100%' height='100%' fill='%23eef6ff'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%230b5cff'>Service Image</text></svg>" alt="Service illustration" style="max-width:100%;border-radius:8px" />
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="service-packages">
+      <div class="card">
+        <h3>Periodic Maintenance</h3>
+        <p>Comprehensive checkups per manufacturer's schedule — oil change, filters, brake inspection and more.</p>
+      </div>
+      <div class="card">
+        <h3>Battery & Electrical</h3>
+        <p>Battery health check, alternator testing and electrical diagnostics by certified technicians.</p>
+      </div>
+      <div class="card">
+        <h3>AC & Comfort</h3>
+        <p>AC servicing, coolant top-up and cabin filter replacement for comfortable drives.</p>
+      </div>
+      <div class="card">
+        <h3>Body & Paint</h3>
+        <p>Minor dent repair, scratch removal and genuine paint matching for a factory finish.</p>
+      </div>
+      <div class="card">
+        <h3>Tyres & Alignment</h3>
+        <p>Tyre replacement, balancing and wheel alignment services to improve safety and fuel efficiency.</p>
+      </div>
+      <div class="card">
+        <h3>Genuine Parts</h3>
+        <p>We use only certified parts to preserve warranty and ensure reliability.</p>
+      </div>
+    </section>
+
+    <section class="split" aria-labelledby="booking-title">
+      <div class="panel" id="booking-panel">
+        <h3 id="booking-title">Book a Service Appointment</h3>
+        <p class="small">Fill in the details and we’ll confirm availability at your chosen center.</p>
+
+        <form id="serviceForm" onsubmit="return false" aria-label="Service booking form">
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div style="flex:1">
+              <label for="ownerName">Full name</label>
+              <input id="ownerName" type="text" required placeholder="e.g. Ravi Kumar" />
+            </div>
+            <div style="width:160px">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" required placeholder="+91 98xxxxxxx" />
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div style="flex:1">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div style="width:160px">
+              <label for="carModel">Model</label>
+              <select id="carModel" required>
+                <option value="">Select model</option>
+                <option>Tiago</option>
+                <option>Nexon</option>
+                <option>Nexon EV</option>
+                <option>Harrier</option>
+                <option>Safari</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="centerSelect">Preferred service centre</label>
+            <select id="centerSelect">
+              <option value="">Nearest recommended</option>
+              <option value="Center A">Tata Service Centre - A (Mumbai)</option>
+              <option value="Center B">Tata Service Centre - B (Bengaluru)</option>
+              <option value="Center C">Tata Service Centre - C (Chennai)</option>
+            </select>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="notes">Notes</label>
+            <textarea id="notes" placeholder="Any special requests or issues (engine noise, AC not cooling...)"></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+            <button class="btn btn-ghost" type="button" id="resetBtn">Reset</button>
+            <button class="btn btn-primary" type="submit" id="submitBtn">Request Appointment</button>
+          </div>
+
+          <div id="formMsg" style="margin-top:12px;color:var(--muted);font-size:14px"></div>
+        </form>
+      </div>
+
+      <aside class="panel" aria-labelledby="centers-title">
+        <h3 id="centers-title">Nearby Service Centres</h3>
+
+        <div class="centers" id="centersList">
+          <div class="center">
+            <div class="left">
+              <h4>Tata Service Centre - A</h4>
+              <p>123 Marine Drive, Mumbai • Mon–Sat 9:00–18:00</p>
+            </div>
+            <div class="right"><button class="btn btn-ghost" onclick="showOnMap('Tata Service Centre - A')">View</button></div>
+          </div>
+
+          <div class="center">
+            <div class="left">
+              <h4>Tata Service Centre - B</h4>
+              <p>55 Outer Ring Rd, Bengaluru • Mon–Sat 9:00–18:00</p>
+            </div>
+            <div class="right"><button class="btn btn-ghost" onclick="showOnMap('Tata Service Centre - B')">View</button></div>
+          </div>
+
+          <div class="center">
+            <div class="left">
+              <h4>Tata Service Centre - C</h4>
+              <p>45 Anna Salai, Chennai • Mon–Sat 9:00–17:30</p>
+            </div>
+            <div class="right"><button class="btn btn-ghost" onclick="showOnMap('Tata Service Centre - C')">View</button></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label for="locator">Find by city</label>
+          <input id="locator" type="text" placeholder="Enter city name" oninput="filterCenters()" />
+        </div>
+
+        <div id="map" style="margin-top:12px;height:160px;border-radius:10px;background:#eef4ff;display:flex;align-items:center;justify-content:center;color:var(--brand)">
+          <span id="mapLabel">Map placeholder</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="faq" aria-label="FAQs">
+      <h3>Frequently Asked Questions</h3>
+      <details class="faq-item"><summary>How long does a standard service take?</summary>
+        <p>Typical periodic maintenance takes 2–5 hours depending on the package and vehicle condition. We will confirm estimated time when you book.</p>
+      </details>
+
+      <details class="faq-item"><summary>Do you use genuine parts?</summary>
+        <p>Yes — all replacement parts are genuine manufacturer parts that preserve warranty and performance.</p>
+      </details>
+
+      <details class="faq-item"><summary>Can I get a pickup and drop service?</summary>
+        <p>Pickup and drop options are available at select centers. Please select your preference in the booking form and we'll confirm availability.</p>
+      </details>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Tata Cars — Service & Maintenance. All rights reserved.</div>
+      <div style="margin-top:6px;color:var(--muted);font-size:13px">Designed for demonstration — update content, images and map integration before production.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactive behaviors: form handling, simple filtering, map placeholder
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const serviceForm = document.getElementById('serviceForm');
+    const formMsg = document.getElementById('formMsg');
+    const resetBtn = document.getElementById('resetBtn');
+
+    serviceForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('ownerName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const model = document.getElementById('carModel').value;
+      if(!name || !phone || !model){
+        formMsg.textContent = 'Please fill required fields: name, phone and model.';
+        formMsg.style.color = '#b80000';
+        return;
+      }
+      // Simulate sending
+      formMsg.style.color = 'var(--brand)';
+      formMsg.textContent = 'Request sent — we will contact you to confirm the appointment.';
+      // Optionally store recent request in sessionStorage (demo)
+      const recent = JSON.parse(sessionStorage.getItem('last_request')||'null');
+      sessionStorage.setItem('last_request', JSON.stringify({name,phone,model,when:new Date().toISOString()}));
+      serviceForm.reset();
+    });
+
+    resetBtn.addEventListener('click', function(){ serviceForm.reset(); formMsg.textContent = ''; });
+
+    function showOnMap(centerName){
+      const label = document.getElementById('mapLabel');
+      label.textContent = centerName + ' — map view';
+    }
+
+    function filterCenters(){
+      const q = document.getElementById('locator').value.trim().toLowerCase();
+      const items = document.querySelectorAll('#centersList .center');
+      items.forEach(it => {
+        const txt = it.innerText.toLowerCase();
+        it.style.display = q === '' || txt.includes(q) ? '' : 'none';
+      });
+    }
+
+    // Quick keyboard shortcut to autofill demo values (for testers) : Ctrl+Alt+D
+    document.addEventListener('keydown', function(e){
+      if(e.ctrlKey && e.altKey && e.key.toLowerCase() === 'd'){
+        document.getElementById('ownerName').value = 'Demo User';
+        document.getElementById('phone').value = '+91 9812345678';
+        document.getElementById('email').value = 'demo@example.com';
+        document.getElementById('carModel').value = 'Nexon';
+        document.getElementById('notes').value = 'Engine noise on acceleration';
+      }
+    });
+
+    // Accessibility: focus outline visible on keyboard nav only
+    (function(){
+      function handleFirstTab(e){
+        if(e.key === 'Tab'){
+          document.documentElement.classList.add('show-focus');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+
+
 </body>
 </html>
