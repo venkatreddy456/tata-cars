@@ -1,18 +1,41 @@
-name: Docker Image CI
+```yaml
+name: Maven Build Test Docker
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
+
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-
-  build:
+  build-test-docker:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+      # 1. Checkout source code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Setup Java 17
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      # 3. Maven Build + Test
+      - name: Maven Build and Test
+        run: mvn clean package
+
+      # 4. Build Docker Image
+      - name: Build Docker Image
+        run: docker build -t my-app:${{ github.sha }} .
+
+      # 5. Verify Docker Image
+      - name: Check Docker Image
+        run: docker images
+```
